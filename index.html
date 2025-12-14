@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: rgb(222, 193, 157);
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            box-sizing: border-box;
+            background-color: #f8f9fa;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            display: flex;
+
+            justify-content: center;
+
+
+        }
+        h1 {
+            color: darkblue;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+
+            font-weight: bold;
+
+
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 16px;
+            margin: 10px 0;
+            padding: 10px;
+            width: 200px;
+            box-sizing: border-box;
+            border-radius: 4px;
+            border: 1px solid #ccc; 
+            margin-right: 10px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: darkblue;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: darkblue;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+
+            font-weight: bold;
+        }
+            .OM {
+            border: 2px solid black;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: white;
+                
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+
+        }
+        button {
+            background-color: darkblue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            background-color: darkblue;
+            color: white;
+            border: none;
+            cursor: pointer;
+
+            background-color: darkblue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            background-color: darkblue;
+        }
+          
+
+        
+    </style>
+    <Script>
+        function calculateBill(units) {
+            let bill = 0;
+            if (units <= 100) {
+                bill = units * 1.25;
+            } else if (units <= 200) {
+                bill = (100 * 1.25) + ((units - 100) * 2.50);
+            } else if (units <= 300) {
+                bill = (100 * 1.25) + (100 * 2.50) + ((units - 200) * 3.75);
+            } else if (units <= 400) {
+                bill = (100 * 1.25) + (100 * 2.50) + (100 * 3.75) + ((units - 300) * 5.00);
+            } else {
+                bill = (100 * 1.25) + (100 * 2.50) + (100 * 3.75) + (100 * 5.00) + ((units - 400) * 10.00);
+            }
+            return bill;
+        }
+
+        // Example usage:
+        const unitsConsumed = 430; // You can change this value to test with different units
+        const totalBill = calculateBill(unitsConsumed);
+        console.log(`Total bill for ${unitsConsumed} units is: $${totalBill.toFixed(2)}`);
+    </Script>
+</head>
+<body>
+<DIV class="OM">
+    <h1>Water Bill Calculator</h1>
+    <p>Enter the number of units consumed:</p>
+    <input type="number" id="unitsInput" />
+    <button onclick="calculateAndDisplayBill()">Calculate Bill</button>
+    <button onclick="resetForm()">Reset</button>
+</DIV>
+    <h2 id="result"></h2>
+    <script>
+        function calculateAndDisplayBill() {
+            const units = parseInt(document.getElementById('unitsInput').value);
+            if (isNaN(units) || units < 0) {
+                alert('Please enter a valid number of units.');
+                return;
+            }
+            const bill = calculateBill(units);
+            document.getElementById('result').innerText = `Total bill for ${units} units is: $${bill.toFixed(2)}`;
+        }   
+    </script>
+
+    <!-- Task 2 - Write code to generate water bill with following charges
+1-100 units charges 1.25
+101 - 200 units charges 2.50
+201 - 300 units charges 3.75
+301 - 400 units charges 5.00
+Above 400 units charges 10.00 
+Example  
+Enter number of units 430 
+bill computation 
+for first 100 = 125 
+for next 100  = 250 
+for next 100  = 375 
+for next 100  = 500 
+FOR LAST 30  = 30 * 10 = 300 
+TOTAL = 1550 -->
+
+
+    
+</body>
+</html>
